@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ApplicationStatusComponent } from './application-status.component';
+import { ApplicationStatusComponent } from './application-dashboard.component';
 
 describe('ApplicationStatusComponent', () => {
   let component: ApplicationStatusComponent;

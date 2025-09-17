@@ -5,16 +5,16 @@ import { CommonModule} from '@angular/common';
 import { TableComponent } from '../../shared/components/table/table.component';
 
 @Component({
-  selector: 'app-application-status',
+  selector: 'app-application-dashboard',
   standalone: true,
   imports: [
     CommonModule, 
     TableComponent
   ],
-  templateUrl: './application-status.component.html',
-  styleUrl: './application-status.component.scss'
+  templateUrl: './application-dashboard.component.html',
+  styleUrl: './application-dashboard.component.scss'
 })
-export class ApplicationStatusComponent {
+export class ApplicationDashboardComponent {
 
   applications: Application[] = [];
   filteredApplications: Application[] = [];
@@ -68,6 +68,6 @@ export class ApplicationStatusComponent {
 
   deleteApplication(id: number): void {
     this.appStore.deleteApplication(id);
-    this.loadApplications(); // refresh daftar
+    this.loadApplications();
   }
 }

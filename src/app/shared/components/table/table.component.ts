@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Application } from '../../../models/application.model';
 import { Router, RouterModule } from '@angular/router';
-import { ConfirmDialogComponent } from '../../../pages/application-status/components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../pages/application-dashboard/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'shared-table',
@@ -43,6 +43,6 @@ export class TableComponent {
   }
 
   goToDetail(id: number): void {
-    this.router.navigate(['/application-status', id]);
+    this.router.navigate(['/application-detail', id]);
   }
 }
