@@ -1,1 +1,53 @@
-<p>application-status works!</p>
+<h2>Daftar Aplikasi</h2>
+
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nama</th>
+      <th>Umur</th>
+      <th>Pekerjaan</th>
+      <th>Penghasilan</th>
+      <th>Barang</th>
+      <th>Tipe</th>
+      <th>Harga</th>
+      <th>Status</th>
+      <th>Dokumen</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let app of applications">
+      <td>{{ app.id }}</td>
+      <td>{{ app.customer.name }}</td>
+      <td>{{ app.customer.age }}</td>
+      <td>{{ app.customer.job }}</td>
+      <td>{{ app.customer.income }}</td>
+      <td>{{ app.item.name }}</td>
+      <td>{{ app.item.type }}</td>
+      <td>{{ app.item.price }}</td>
+      <td>{{ app.status }}</td>
+      <td>
+        <div *ngIf="app.documents.ktp">
+          <a [href]="app.documents.ktp" target="_blank">KTP</a>
+        </div>
+        <div *ngIf="app.documents.kk">
+          <a [href]="app.documents.kk" target="_blank">KK</a>
+        </div>
+        <div *ngIf="app.documents.paySlip">
+          <a [href]="app.documents.paySlip" target="_blank">Slip Gaji</a>
+        </div>
+        <div *ngIf="app.documents.npwp">
+          <a [href]="app.documents.npwp" target="_blank">NPWP</a>
+        </div>
+      </td>
+      <td>
+        <button (click)="deleteApplication(app.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="applications.length === 0">
+  <p><em>Belum ada aplikasi.</em></p>
+</div>

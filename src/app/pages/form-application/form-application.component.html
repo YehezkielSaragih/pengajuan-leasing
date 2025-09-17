@@ -1,1 +1,43 @@
-<p>form-application works!</p>
+<h2>Form Application</h2>
+<form (ngSubmit)="onSubmit()">
+  <h3>Customer</h3>
+  <label>Nama:</label>
+  <input type="text" [(ngModel)]="application.customer.name" name="name" required>
+
+  <label>Umur:</label>
+  <input type="number" [(ngModel)]="application.customer.age" name="age">
+
+  <label>Pekerjaan:</label>
+  <input type="text" [(ngModel)]="application.customer.job" name="job">
+
+  <label>Penghasilan:</label>
+  <input type="number" [(ngModel)]="application.customer.income" name="income">
+
+  <h3>Item</h3>
+  <label>Nama Barang:</label>
+  <input type="text" [(ngModel)]="application.item.name" name="itemName">
+
+  <label>Tipe:</label>
+  <input type="text" [(ngModel)]="application.item.type" name="itemType">
+
+  <label>Harga:</label>
+  <input type="number" [(ngModel)]="application.item.price" name="itemPrice">
+
+  <!-- Status otomatis Pending, jadi tidak perlu input -->
+  <p><strong>Status aplikasi:</strong> {{ application.status }}</p>
+
+  <h3>Dokumen</h3>
+  <label>KTP:</label>
+  <input type="file" (change)="onFileSelected($event, 'ktp')">
+
+  <label>KK:</label>
+  <input type="file" (change)="onFileSelected($event, 'kk')">
+
+  <label>Slip Gaji:</label>
+  <input type="file" (change)="onFileSelected($event, 'paySlip')">
+
+  <label>NPWP:</label>
+  <input type="file" (change)="onFileSelected($event, 'npwp')">
+
+  <button type="submit">Simpan</button>
+</form>
