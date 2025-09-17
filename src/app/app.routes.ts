@@ -7,7 +7,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AppDashboardComponent } from './pages/app-dashboard/app-dashboard.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'app-dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'app-form', component: AppFormComponent },
