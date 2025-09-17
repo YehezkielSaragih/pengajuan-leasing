@@ -1,11 +1,12 @@
 <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()" novalidate>
+
   <!-- Customer Info -->
   <fieldset formGroupName="customer">
     <legend>Customer Info</legend>
 
     <label>
       Name
-      <input type="text" formControlName="name"
+      <input type="text" formControlName="name" placeholder="Please input name"
              [ngClass]="{'invalid-input': applicationForm.get('customer.name')?.invalid && (applicationForm.get('customer.name')?.touched || applicationForm.get('customer.name')?.dirty)}">
       <div class="error" *ngIf="applicationForm.get('customer.name')?.errors && (applicationForm.get('customer.name')?.touched || applicationForm.get('customer.name')?.dirty)">
         <small *ngIf="applicationForm.get('customer.name')?.errors?.['required']">Name is required</small>
@@ -15,7 +16,7 @@
 
     <label>
       Age
-      <input type="number" formControlName="age"
+      <input type="number" formControlName="age" placeholder="Please input age"
              [ngClass]="{'invalid-input': applicationForm.get('customer.age')?.invalid && (applicationForm.get('customer.age')?.touched || applicationForm.get('customer.age')?.dirty)}">
       <div class="error" *ngIf="applicationForm.get('customer.age')?.errors && (applicationForm.get('customer.age')?.touched || applicationForm.get('customer.age')?.dirty)">
         <small *ngIf="applicationForm.get('customer.age')?.errors?.['required']">Age is required</small>
@@ -25,7 +26,7 @@
 
     <label>
       Job
-      <input type="text" formControlName="job"
+      <input type="text" formControlName="job" placeholder="Please input job"
              [ngClass]="{'invalid-input': applicationForm.get('customer.job')?.invalid && (applicationForm.get('customer.job')?.touched || applicationForm.get('customer.job')?.dirty)}">
       <div class="error" *ngIf="applicationForm.get('customer.job')?.errors && (applicationForm.get('customer.job')?.touched || applicationForm.get('customer.job')?.dirty)">
         <small *ngIf="applicationForm.get('customer.job')?.errors?.['required']">Job is required</small>
@@ -34,7 +35,7 @@
 
     <label>
       Income
-      <input type="number" formControlName="income"
+      <input type="number" formControlName="income" placeholder="Please input income"
              [ngClass]="{'invalid-input': applicationForm.get('customer.income')?.invalid && (applicationForm.get('customer.income')?.touched || applicationForm.get('customer.income')?.dirty)}">
       <div class="error" *ngIf="applicationForm.get('customer.income')?.errors && (applicationForm.get('customer.income')?.touched || applicationForm.get('customer.income')?.dirty)">
         <small *ngIf="applicationForm.get('customer.income')?.errors?.['required']">Income is required</small>
@@ -48,8 +49,23 @@
     <legend>Item Info</legend>
 
     <label>
+      Item Type
+      <select formControlName="type"
+              [ngClass]="{'invalid-input': applicationForm.get('item.type')?.invalid && (applicationForm.get('item.type')?.touched || applicationForm.get('item.type')?.dirty)}">
+        <option value="" disabled>Please select item type</option>
+        <option value="Motorcycle">Motorcycle</option>
+        <option value="Car">Car</option>
+        <option value="Electronic">Electronic</option>
+        <option value="Property">Property</option>
+      </select>
+      <div class="error" *ngIf="applicationForm.get('item.type')?.errors && (applicationForm.get('item.type')?.touched || applicationForm.get('item.type')?.dirty)">
+        <small *ngIf="applicationForm.get('item.type')?.errors?.['required']">Item type is required</small>
+      </div>
+    </label>
+
+    <label>
       Item Name
-      <input type="text" formControlName="name"
+      <input type="text" formControlName="name" placeholder="Please input item name"
              [ngClass]="{'invalid-input': applicationForm.get('item.name')?.invalid && (applicationForm.get('item.name')?.touched || applicationForm.get('item.name')?.dirty)}">
       <div class="error" *ngIf="applicationForm.get('item.name')?.errors && (applicationForm.get('item.name')?.touched || applicationForm.get('item.name')?.dirty)">
         <small *ngIf="applicationForm.get('item.name')?.errors?.['required']">Item name is required</small>
@@ -57,17 +73,8 @@
     </label>
 
     <label>
-      Item Type
-      <input type="text" formControlName="type"
-             [ngClass]="{'invalid-input': applicationForm.get('item.type')?.invalid && (applicationForm.get('item.type')?.touched || applicationForm.get('item.type')?.dirty)}">
-      <div class="error" *ngIf="applicationForm.get('item.type')?.errors && (applicationForm.get('item.type')?.touched || applicationForm.get('item.type')?.dirty)">
-        <small *ngIf="applicationForm.get('item.type')?.errors?.['required']">Item type is required</small>
-      </div>
-    </label>
-
-    <label>
       Item Price
-      <input type="number" formControlName="price"
+      <input type="number" formControlName="price" placeholder="Please input item price"
              [ngClass]="{'invalid-input': applicationForm.get('item.price')?.invalid && (applicationForm.get('item.price')?.touched || applicationForm.get('item.price')?.dirty)}">
       <div class="error" *ngIf="applicationForm.get('item.price')?.errors && (applicationForm.get('item.price')?.touched || applicationForm.get('item.price')?.dirty)">
         <small *ngIf="applicationForm.get('item.price')?.errors?.['required']">Item price is required</small>
@@ -80,25 +87,10 @@
   <fieldset formGroupName="documents">
     <legend>Documents</legend>
 
-    <label>
-      KTP
-      <input type="file" (change)="onFileSelected($event, 'ktp')">
-    </label>
-
-    <label>
-      KK
-      <input type="file" (change)="onFileSelected($event, 'kk')">
-    </label>
-
-    <label>
-      Pay Slip
-      <input type="file" (change)="onFileSelected($event, 'paySlip')">
-    </label>
-
-    <label>
-      NPWP
-      <input type="file" (change)="onFileSelected($event, 'npwp')">
-    </label>
+    <label>KTP <input type="file" (change)="onFileSelected($event, 'ktp')"></label>
+    <label>KK <input type="file" (change)="onFileSelected($event, 'kk')"></label>
+    <label>Pay Slip <input type="file" (change)="onFileSelected($event, 'paySlip')"></label>
+    <label>NPWP <input type="file" (change)="onFileSelected($event, 'npwp')"></label>
   </fieldset>
 
   <button type="submit" [disabled]="applicationForm.invalid">Submit</button>

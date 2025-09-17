@@ -23,14 +23,14 @@ export class FormComponent {
     this.applicationForm = this.fb.group({
       customer: this.fb.group({
         name: ['', [Validators.required, Validators.minLength(3)]],
-        age: [0, [Validators.required, Validators.min(1)]],
+        age: [null, [Validators.required, Validators.min(1)]],
         job: ['', [Validators.required]],
-        income: [0, [Validators.required, Validators.min(1)]],
+        income: [null, [Validators.required, Validators.min(1)]],
       }),
       item: this.fb.group({
         name: ['', [Validators.required]],
         type: ['', [Validators.required]],
-        price: [0, [Validators.required, Validators.min(1)]],
+        price: [null, [Validators.required, Validators.min(1)]],
       }),
       documents: this.fb.group({
         ktp: [null, [Validators.required]],
