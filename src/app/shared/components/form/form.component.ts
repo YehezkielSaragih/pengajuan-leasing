@@ -64,6 +64,6 @@ export class FormComponent {
   }
 
   goToStatusPage(): void {
-    this.router.navigate(['/status-application']);
+    this.router.navigate(['/application-status']);
   }
 }

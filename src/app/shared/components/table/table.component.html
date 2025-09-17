@@ -1,46 +1,21 @@
-<table border="1" cellpadding="6" cellspacing="0">
+<table>
   <thead>
     <tr>
       <th>ID</th>
       <th>Name</th>
-      <th>Age</th>
-      <th>Job</th>
-      <th>Income</th>
-      <th>Item</th>
       <th>Type</th>
-      <th>Price</th>
       <th>Status</th>
-      <th>Documents</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let app of applications">
+    <tr *ngFor="let app of applications" (click)="goToDetail(app.id)">
       <td>{{ app.id }}</td>
       <td>{{ app.customer.name }}</td>
-      <td>{{ app.customer.age }}</td>
-      <td>{{ app.customer.job }}</td>
-      <td>{{ app.customer.income }}</td>
-      <td>{{ app.item.name }}</td>
       <td>{{ app.item.type }}</td>
-      <td>{{ app.item.price }}</td>
       <td>{{ app.status }}</td>
       <td>
-        <div *ngIf="app.documents.ktp">
-          <a [href]="app.documents.ktp" target="_blank">KTP</a>
-        </div>
-        <div *ngIf="app.documents.kk">
-          <a [href]="app.documents.kk" target="_blank">KK</a>
-        </div>
-        <div *ngIf="app.documents.paySlip">
-          <a [href]="app.documents.paySlip" target="_blank">Slip Gaji</a>
-        </div>
-        <div *ngIf="app.documents.npwp">
-          <a [href]="app.documents.npwp" target="_blank">NPWP</a>
-        </div>
-      </td>
-      <td>
-        <button (click)="onDelete(app.id)">Delete</button>
+        <button (click)="onDelete(app.id, $event)">Delete</button>
       </td>
     </tr>
   </tbody>

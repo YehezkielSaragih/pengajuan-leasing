@@ -1,21 +1,25 @@
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin: 20px 0;
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 0px;
 
   thead {
-    background-color: #4a90e2;
-    color: #ffffff;
-    text-align: left;
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: #fff;
+    text-align: center;
 
     th {
-      padding: 12px 15px;
-      font-weight: bold;
-      border-right: 1px solid rgba(255, 255, 255, 0.3);
-      text-align: center;
+      padding: 14px 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
 
       &:last-child {
         border-right: none;
@@ -25,45 +29,50 @@ table {
 
   tbody {
     tr {
-      border-bottom: 1px solid #dddddd;
-      transition: background-color 0.3s;
-      text-align: center;
+      border-bottom: 1px solid #e6e6e6;
+      transition: all 0.25s ease-in-out;
 
-      &:hover {
-        background-color: #f1f7ff;
+      &:nth-child(even) {
+        background-color: #f9fbfd; // striped effect
       }
     }
 
     td {
-      padding: 12px 15px;
-      border-right: 1px solid #f0f0f0;
+      padding: 12px 14px;
+      text-align: center;
       vertical-align: middle;
+      border-right: 1px solid #f0f0f0;
 
       &:last-child {
         border-right: none;
       }
 
       a {
-        color: #4a90e2;
-        text-decoration: none;
+        color: #357abd;
         font-weight: 500;
+        text-decoration: none;
 
         &:hover {
           text-decoration: underline;
+          color: #245b91;
         }
       }
 
       button {
-        background-color: #e74c3c;
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
         color: #fff;
         border: none;
-        padding: 6px 12px;
+        padding: 6px 14px;
         border-radius: 6px;
         cursor: pointer;
-        transition: background-color 0.2s;
+        font-size: 13px;
+        font-weight: 500;
+        transition: all 0.2s ease;
 
         &:hover {
-          background-color: #c0392b;
+          background: linear-gradient(135deg, #c0392b, #962d22);
+          transform: translateY(-2px);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
         }
       }
     }
@@ -74,6 +83,19 @@ table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+    border-radius: 8px;
+
+    thead {
+      th {
+        padding: 10px;
+        font-size: 13px;
+      }
+    }
+
+    tbody td {
+      padding: 10px;
+      font-size: 13px;
+    }
   }
 }
 
@@ -81,6 +103,7 @@ table {
 p {
   text-align: center;
   font-style: italic;
-  color: #888;
+  color: #777;
   margin-top: 20px;
+  font-size: 15px;
 }
