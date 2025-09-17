@@ -9,7 +9,8 @@ import { TableComponent } from '../../shared/components/table/table.component';
   standalone: true,
   imports: [
     CommonModule, 
-    TableComponent],
+    TableComponent
+  ],
   templateUrl: './application-status.component.html',
   styleUrl: './application-status.component.scss'
 })

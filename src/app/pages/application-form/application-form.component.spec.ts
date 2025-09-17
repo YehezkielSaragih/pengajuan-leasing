@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormApplicationComponent } from './form-application.component';
+import { FormApplicationComponent } from './application-form.component';
 
 describe('FormApplicationComponent', () => {
   let component: FormApplicationComponent;
