@@ -1,0 +1,23 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm">
+
+    <label>
+      Email
+      <input type="email" formControlName="email" placeholder="Enter your email"
+             [ngClass]="{'invalid-input': loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)}">
+      <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</small>
+      <small *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format</small>
+    </label>
+
+    <label>
+      Password
+      <input type="password" formControlName="password" placeholder="Enter your password"
+             [ngClass]="{'invalid-input': loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)}">
+      <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</small>
+      <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</small>
+    </label>
+
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+</div>

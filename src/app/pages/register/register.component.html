@@ -1,0 +1,39 @@
+<div class="register-container">
+  <h2>Register</h2>
+  <form [formGroup]="registerForm">
+
+    <label>
+      Name
+      <input type="text" formControlName="name" placeholder="Enter your name"
+             [ngClass]="{'invalid-input': registerForm.get('name')?.invalid && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)}">
+      <small *ngIf="registerForm.get('name')?.errors?.['required']">Name is required</small>
+      <small *ngIf="registerForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters</small>
+    </label>
+
+    <label>
+      Email
+      <input type="email" formControlName="email" placeholder="Enter your email"
+             [ngClass]="{'invalid-input': registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)}">
+      <small *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</small>
+      <small *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format</small>
+    </label>
+
+    <label>
+      Password
+      <input type="password" formControlName="password" placeholder="Enter your password"
+             [ngClass]="{'invalid-input': registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)}">
+      <small *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</small>
+      <small *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</small>
+    </label>
+
+    <label>
+      Confirm Password
+      <input type="password" formControlName="confirmPassword" placeholder="Confirm your password"
+             [ngClass]="{'invalid-input': (registerForm.get('confirmPassword')?.invalid || registerForm.errors?.['mismatch']) && (registerForm.get('confirmPassword')?.touched || registerForm.get('confirmPassword')?.dirty)}">
+      <small *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm password is required</small>
+      <small *ngIf="registerForm.errors?.['mismatch']">Passwords do not match</small>
+    </label>
+
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+</div>
