@@ -18,7 +18,7 @@ export class ApplicationStoreService {
   addApplication(data: Omit<Application, 'id'>): void {
     const apps = this.getApplications();
     const newId = apps.length > 0 ? Math.max(...apps.map(a => a.id)) + 1 : 1;
-    const newApp: Application = { id: newId, ...data };
+    const newApp: Application = { id: newId, ...data, status: 'Pending' };
     apps.push(newApp);
     this.saveApplications(apps);
   }

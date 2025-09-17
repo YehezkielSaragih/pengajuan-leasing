@@ -37,8 +37,7 @@ export class FormComponent {
         kk: [null],
         paySlip: [null],
         npwp: [null],
-      }),
-      status: ['Pending']
+      })
     });
   }
 
