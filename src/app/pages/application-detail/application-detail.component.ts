@@ -51,6 +51,7 @@ export class ApplicationDetailComponent {
       });
       this.originalStatus = this.application.status; // reset status awal
       alert('Status berhasil disimpan!');
+      this.router.navigate(['/application-status']);
     }
   }
 

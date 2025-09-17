@@ -6,3 +6,21 @@ h2 {
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 8px;
 }
+
+.filter-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  input,
+  select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+
+  input {
+    flex: 1;
+  }
+}
+

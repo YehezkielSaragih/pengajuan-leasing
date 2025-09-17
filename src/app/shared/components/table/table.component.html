@@ -13,7 +13,11 @@
       <td>{{ app.id }}</td>
       <td>{{ app.customer.name }}</td>
       <td>{{ app.item.type }}</td>
-      <td>{{ app.status }}</td>
+      <td>
+        <span class="status-badge" [ngClass]="app.status.toLowerCase()">
+          {{ app.status }}
+        </span>
+      </td>
       <td>
         <button (click)="openConfirm(app.id, $event)">Delete</button>
       </td>

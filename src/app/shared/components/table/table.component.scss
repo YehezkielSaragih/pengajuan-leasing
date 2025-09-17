@@ -29,11 +29,19 @@ table {
 
   tbody {
     tr {
-      border-bottom: 1px solid #e6e6e6;
-      transition: all 0.25s ease-in-out;
+    border-bottom: 1px solid #e6e6e6;
+    transition: all 0.25s ease-in-out;
+
+      &:nth-child(odd) {
+        background-color: #ffffff; // putih
+      }
 
       &:nth-child(even) {
-        background-color: #f9fbfd; // striped effect
+        background-color: #edf3fb; // biru muda
+      }
+
+      &:hover {
+        transform: scale(1.01);
       }
     }
 
@@ -106,4 +114,32 @@ p {
   color: #777;
   margin-top: 20px;
   font-size: 15px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+/* Warna sesuai status */
+.pending {
+  background-color: #f1c40f; /* kuning */
+  color: #000;
+}
+
+.survey {
+  background-color: #3498db; /* biru */
+}
+
+.approved {
+  background-color: #2ecc71; /* hijau */
+}
+
+.rejected {
+  background-color: #e74c3c; /* merah */
 }
