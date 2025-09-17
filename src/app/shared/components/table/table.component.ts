@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Application } from '../../../models/application.model';
 import { Router, RouterModule } from '@angular/router';
-import { ConfirmDialogComponent } from '../../../pages/application-dashboard/components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../pages/app-dashboard/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'shared-table',
@@ -21,7 +21,7 @@ export class TableComponent {
   constructor(private router: Router) {}
 
   openConfirm(id: number, event: Event): void {
-    event.stopPropagation(); // biar ga ikut trigger goToDetail
+    event.stopPropagation();
     this.appIdToDelete = id;
     this.confirmVisible = true;
   }
@@ -43,6 +43,6 @@ export class TableComponent {
   }
 
   goToDetail(id: number): void {
-    this.router.navigate(['/application-detail', id]);
+    this.router.navigate(['/app-detail', id]);
   }
 }

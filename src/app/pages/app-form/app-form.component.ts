@@ -7,8 +7,8 @@ import { FormComponent } from "../../shared/components/form/form.component";
   imports: [
     FormComponent
 ],
-  templateUrl: './application-form.component.html',
-  styleUrl: './application-form.component.scss'
+  templateUrl: './app-form.component.html',
+  styleUrl: './app-form.component.scss'
 })
-export class FormApplicationComponent {
+export class AppFormComponent {
 }

@@ -5,16 +5,16 @@ import { CommonModule} from '@angular/common';
 import { TableComponent } from '../../shared/components/table/table.component';
 
 @Component({
-  selector: 'app-application-dashboard',
+  selector: 'app-dashboard',
   standalone: true,
   imports: [
     CommonModule, 
     TableComponent
   ],
-  templateUrl: './application-dashboard.component.html',
-  styleUrl: './application-dashboard.component.scss'
+  templateUrl: './app-dashboard.component.html',
+  styleUrl: './app-dashboard.component.scss'
 })
-export class ApplicationDashboardComponent {
+export class AppDashboardComponent {
 
   applications: Application[] = [];
   filteredApplications: Application[] = [];

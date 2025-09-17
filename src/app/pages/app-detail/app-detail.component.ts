@@ -7,13 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { SafeUrlPipe } from '../../shared/pipes/safe-url.pipe';
 
 @Component({
-  selector: 'app-application-detail',
+  selector: 'app-detail',
   standalone: true,
   imports: [CommonModule, FormsModule, SafeUrlPipe],
-  templateUrl: './application-detail.component.html',
-  styleUrl: './application-detail.component.scss'
+  templateUrl: './app-detail.component.html',
+  styleUrl: './app-detail.component.scss'
 })
-export class ApplicationDetailComponent {
+export class AppDetailComponent {
   application: Application | null = null;
   originalStatus: string = '';
 
@@ -34,7 +34,7 @@ export class ApplicationDetailComponent {
   }
 
   onBack(): void {
-    this.router.navigate(['/application-dashboard']);
+    this.router.navigate(['/app-dashboard']);
   }
 
   isStatusChanged(): boolean {
@@ -48,7 +48,7 @@ export class ApplicationDetailComponent {
       });
       this.originalStatus = this.application.status;
       alert('Status updated successfully!');
-      this.router.navigate(['/application-dashboard']);
+      this.router.navigate(['/app-dashboard']);
     }
   }
 

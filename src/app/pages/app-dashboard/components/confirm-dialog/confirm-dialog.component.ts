@@ -9,10 +9,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./confirm-dialog.component.scss']
 })
 export class ConfirmDialogComponent {
-  @Input() title: string = 'Konfirmasi';
-  @Input() message: string = 'Apakah Anda yakin?';
-  @Input() confirmText: string = 'Ya';
-  @Input() cancelText: string = 'Batal';
+  @Input() title: string = 'Confirmation';
+  @Input() message: string = 'Are you sure?';
+  @Input() confirmText: string = 'Yes';
+  @Input() cancelText: string = 'Cancel';
   @Input() visible: boolean = false;
 
   @Output() confirm = new EventEmitter<void>();
