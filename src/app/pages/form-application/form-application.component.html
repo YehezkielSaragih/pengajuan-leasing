@@ -1,43 +1,105 @@
-<h2>Form Application</h2>
-<form (ngSubmit)="onSubmit()">
-  <h3>Customer</h3>
-  <label>Nama:</label>
-  <input type="text" [(ngModel)]="application.customer.name" name="name" required>
+<form [formGroup]="applicationForm" (ngSubmit)="onSubmit()" novalidate>
+  <!-- Customer Info -->
+  <fieldset formGroupName="customer">
+    <legend>Customer Info</legend>
 
-  <label>Umur:</label>
-  <input type="number" [(ngModel)]="application.customer.age" name="age">
+    <label>
+      Name
+      <input type="text" formControlName="name"
+             [ngClass]="{'invalid-input': applicationForm.get('customer.name')?.invalid && (applicationForm.get('customer.name')?.touched || applicationForm.get('customer.name')?.dirty)}">
+      <div class="error" *ngIf="applicationForm.get('customer.name')?.errors && (applicationForm.get('customer.name')?.touched || applicationForm.get('customer.name')?.dirty)">
+        <small *ngIf="applicationForm.get('customer.name')?.errors?.['required']">Name is required</small>
+        <small *ngIf="applicationForm.get('customer.name')?.errors?.['minlength']">Name must be at least 3 characters</small>
+      </div>
+    </label>
 
-  <label>Pekerjaan:</label>
-  <input type="text" [(ngModel)]="application.customer.job" name="job">
+    <label>
+      Age
+      <input type="number" formControlName="age"
+             [ngClass]="{'invalid-input': applicationForm.get('customer.age')?.invalid && (applicationForm.get('customer.age')?.touched || applicationForm.get('customer.age')?.dirty)}">
+      <div class="error" *ngIf="applicationForm.get('customer.age')?.errors && (applicationForm.get('customer.age')?.touched || applicationForm.get('customer.age')?.dirty)">
+        <small *ngIf="applicationForm.get('customer.age')?.errors?.['required']">Age is required</small>
+        <small *ngIf="applicationForm.get('customer.age')?.errors?.['min']">Age must be greater than 0</small>
+      </div>
+    </label>
 
-  <label>Penghasilan:</label>
-  <input type="number" [(ngModel)]="application.customer.income" name="income">
+    <label>
+      Job
+      <input type="text" formControlName="job"
+             [ngClass]="{'invalid-input': applicationForm.get('customer.job')?.invalid && (applicationForm.get('customer.job')?.touched || applicationForm.get('customer.job')?.dirty)}">
+      <div class="error" *ngIf="applicationForm.get('customer.job')?.errors && (applicationForm.get('customer.job')?.touched || applicationForm.get('customer.job')?.dirty)">
+        <small *ngIf="applicationForm.get('customer.job')?.errors?.['required']">Job is required</small>
+      </div>
+    </label>
 
-  <h3>Item</h3>
-  <label>Nama Barang:</label>
-  <input type="text" [(ngModel)]="application.item.name" name="itemName">
+    <label>
+      Income
+      <input type="number" formControlName="income"
+             [ngClass]="{'invalid-input': applicationForm.get('customer.income')?.invalid && (applicationForm.get('customer.income')?.touched || applicationForm.get('customer.income')?.dirty)}">
+      <div class="error" *ngIf="applicationForm.get('customer.income')?.errors && (applicationForm.get('customer.income')?.touched || applicationForm.get('customer.income')?.dirty)">
+        <small *ngIf="applicationForm.get('customer.income')?.errors?.['required']">Income is required</small>
+        <small *ngIf="applicationForm.get('customer.income')?.errors?.['min']">Income must be greater than 0</small>
+      </div>
+    </label>
+  </fieldset>
 
-  <label>Tipe:</label>
-  <input type="text" [(ngModel)]="application.item.type" name="itemType">
+  <!-- Item Info -->
+  <fieldset formGroupName="item">
+    <legend>Item Info</legend>
 
-  <label>Harga:</label>
-  <input type="number" [(ngModel)]="application.item.price" name="itemPrice">
+    <label>
+      Item Name
+      <input type="text" formControlName="name"
+             [ngClass]="{'invalid-input': applicationForm.get('item.name')?.invalid && (applicationForm.get('item.name')?.touched || applicationForm.get('item.name')?.dirty)}">
+      <div class="error" *ngIf="applicationForm.get('item.name')?.errors && (applicationForm.get('item.name')?.touched || applicationForm.get('item.name')?.dirty)">
+        <small *ngIf="applicationForm.get('item.name')?.errors?.['required']">Item name is required</small>
+      </div>
+    </label>
 
-  <!-- Status otomatis Pending, jadi tidak perlu input -->
-  <p><strong>Status aplikasi:</strong> {{ application.status }}</p>
+    <label>
+      Item Type
+      <input type="text" formControlName="type"
+             [ngClass]="{'invalid-input': applicationForm.get('item.type')?.invalid && (applicationForm.get('item.type')?.touched || applicationForm.get('item.type')?.dirty)}">
+      <div class="error" *ngIf="applicationForm.get('item.type')?.errors && (applicationForm.get('item.type')?.touched || applicationForm.get('item.type')?.dirty)">
+        <small *ngIf="applicationForm.get('item.type')?.errors?.['required']">Item type is required</small>
+      </div>
+    </label>
 
-  <h3>Dokumen</h3>
-  <label>KTP:</label>
-  <input type="file" (change)="onFileSelected($event, 'ktp')">
+    <label>
+      Item Price
+      <input type="number" formControlName="price"
+             [ngClass]="{'invalid-input': applicationForm.get('item.price')?.invalid && (applicationForm.get('item.price')?.touched || applicationForm.get('item.price')?.dirty)}">
+      <div class="error" *ngIf="applicationForm.get('item.price')?.errors && (applicationForm.get('item.price')?.touched || applicationForm.get('item.price')?.dirty)">
+        <small *ngIf="applicationForm.get('item.price')?.errors?.['required']">Item price is required</small>
+        <small *ngIf="applicationForm.get('item.price')?.errors?.['min']">Item price must be greater than 0</small>
+      </div>
+    </label>
+  </fieldset>
 
-  <label>KK:</label>
-  <input type="file" (change)="onFileSelected($event, 'kk')">
+  <!-- Documents -->
+  <fieldset formGroupName="documents">
+    <legend>Documents</legend>
 
-  <label>Slip Gaji:</label>
-  <input type="file" (change)="onFileSelected($event, 'paySlip')">
+    <label>
+      KTP
+      <input type="file" (change)="onFileSelected($event, 'ktp')">
+    </label>
 
-  <label>NPWP:</label>
-  <input type="file" (change)="onFileSelected($event, 'npwp')">
+    <label>
+      KK
+      <input type="file" (change)="onFileSelected($event, 'kk')">
+    </label>
 
-  <button type="submit">Simpan</button>
+    <label>
+      Pay Slip
+      <input type="file" (change)="onFileSelected($event, 'paySlip')">
+    </label>
+
+    <label>
+      NPWP
+      <input type="file" (change)="onFileSelected($event, 'npwp')">
+    </label>
+  </fieldset>
+
+  <button type="submit" [disabled]="applicationForm.invalid">Submit</button>
 </form>
