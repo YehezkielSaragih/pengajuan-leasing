@@ -33,10 +33,10 @@ export class FormComponent {
         price: [0, [Validators.required, Validators.min(1)]],
       }),
       documents: this.fb.group({
-        ktp: [null],
-        kk: [null],
-        paySlip: [null],
-        npwp: [null],
+        ktp: [null, [Validators.required]],
+        kk: [null, [Validators.required]],
+        paySlip: [null, [Validators.required]],
+        npwp: [null, [Validators.required]],
       })
     });
   }
