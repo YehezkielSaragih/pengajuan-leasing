@@ -53,22 +53,13 @@ export class FormComponent {
   onSubmit(): void {
     if (this.applicationForm.valid) {
       const formValue = this.applicationForm.value;
-
-      const newApplication: Application = {
-        id: Date.now(),
-        ...formValue
-      };
-
-      this.appStore.addApplication(newApplication);
+      this.appStore.addApplication(formValue);
       alert('Application submitted successfully!');
-
       this.applicationForm.reset({
         customer: { name: '', age: 0, job: '', income: 0 },
         item: { name: '', type: '', price: 0 },
         documents: { ktp: null, kk: null, paySlip: null, npwp: null },
-        status: 'Pending'
       });
-
       this.goToStatusPage();
     }
   }

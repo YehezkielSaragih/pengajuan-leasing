@@ -12,7 +12,7 @@ export interface Application {
     price: number;
   };
   documents: {
-    ktp: string | null;     // simpan path relatif
+    ktp: string | null;   
     kk: string | null;
     paySlip: string | null;
     npwp: string | null;

@@ -15,7 +15,7 @@ export class ApplicationStoreService {
     localStorage.setItem(this.storageKey, JSON.stringify(apps));
   }
 
-  addApplication(data: Omit<Application, 'id'>) {
+  addApplication(data: Omit<Application, 'id'>): void {
     const apps = this.getApplications();
     const newId = apps.length > 0 ? Math.max(...apps.map(a => a.id)) + 1 : 1;
     const newApp: Application = { id: newId, ...data };
@@ -27,7 +27,7 @@ export class ApplicationStoreService {
     const apps = this.getApplications();
     const index = apps.findIndex(app => app.id === id);
     if (index !== -1) {
-      apps[index] = { ...apps[index], ...data, id }; // jaga ID tetap sama
+      apps[index] = { ...apps[index], ...data, id }; 
       this.saveApplications(apps);
     }
   }
