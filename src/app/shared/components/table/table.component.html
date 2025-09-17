@@ -15,7 +15,7 @@
       <td>{{ app.item.type }}</td>
       <td>{{ app.status }}</td>
       <td>
-        <button (click)="onDelete(app.id, $event)">Delete</button>
+        <button (click)="openConfirm(app.id, $event)">Delete</button>
       </td>
     </tr>
   </tbody>
@@ -24,3 +24,14 @@
 <div *ngIf="applications.length === 0">
   <p><em>No applications yet.</em></p>
 </div>
+
+<!-- Modal Konfirmasi -->
+<app-confirm-dialog
+  [visible]="confirmVisible"
+  title="Hapus Data"
+  message="Are you sure you want to delete this application?"
+  confirmText="Hapus"
+  cancelText="Batal"
+  (confirm)="handleConfirmDelete()"
+  (cancel)="handleCancelDelete()">
+</app-confirm-dialog>

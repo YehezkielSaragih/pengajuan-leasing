@@ -1,29 +1,48 @@
 import { CommonModule } from '@angular/common';
-import { Component ,Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Application } from '../../../models/application.model';
 import { Router, RouterModule } from '@angular/router';
-
+import { ConfirmDialogComponent } from '../../../pages/application-status/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'shared-table',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ConfirmDialogComponent],
   templateUrl: './table.component.html',
-  styleUrl: './table.component.scss'
+  styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
   @Input() applications: Application[] = [];
   @Output() delete = new EventEmitter<number>();
 
+  confirmVisible = false;
+  appIdToDelete: number | null = null;
+
   constructor(private router: Router) {}
 
-  onDelete(id: number, event: Event): void {
-    event.stopPropagation();
-    this.delete.emit(id);
+  openConfirm(id: number, event: Event): void {
+    event.stopPropagation(); // biar ga ikut trigger goToDetail
+    this.appIdToDelete = id;
+    this.confirmVisible = true;
+  }
+
+  handleConfirmDelete(): void {
+    if (this.appIdToDelete !== null) {
+      this.delete.emit(this.appIdToDelete);
+    }
+    this.closeConfirm();
+  }
+
+  handleCancelDelete(): void {
+    this.closeConfirm();
+  }
+
+  private closeConfirm(): void {
+    this.confirmVisible = false;
+    this.appIdToDelete = null;
   }
 
   goToDetail(id: number): void {
     this.router.navigate(['/application-status', id]);
   }
-
 }
