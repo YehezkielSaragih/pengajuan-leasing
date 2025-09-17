@@ -28,30 +28,27 @@ export class ApplicationDetailComponent {
     const foundApp = this.appStore.getApplications().find(app => app.id === id);
 
     if (foundApp) {
-      // Clone object supaya tidak langsung mutate data di service
       this.application = { ...foundApp };
       this.originalStatus = foundApp.status;
     }
   }
 
   onBack(): void {
-    this.router.navigate(['/application-status']);
+    this.router.navigate(['/application-dashboard']);
   }
 
-  // Cek apakah dropdown diubah
   isStatusChanged(): boolean {
     return this.application?.status !== this.originalStatus;
   }
 
-  // Simpan perubahan
   onSave(): void {
     if (this.application) {
       this.appStore.updateApplication(this.application.id, {
         status: this.application.status
       });
-      this.originalStatus = this.application.status; // reset status awal
-      alert('Status berhasil disimpan!');
-      this.router.navigate(['/application-status']);
+      this.originalStatus = this.application.status;
+      alert('Status updated successfully!');
+      this.router.navigate(['/application-dashboard']);
     }
   }
 
