@@ -3,13 +3,15 @@ import { ApplicationStoreService } from '../../shared/services/application-store
 import { Application } from '../../models/application.model';
 import { CommonModule} from '@angular/common';
 import { TableComponent } from '../../shared/components/table/table.component';
+import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
     CommonModule, 
-    TableComponent
+    TableComponent,
+    SidebarComponent
   ],
   templateUrl: './app-dashboard.component.html',
   styleUrl: './app-dashboard.component.scss'

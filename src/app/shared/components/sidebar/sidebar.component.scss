@@ -1,20 +1,20 @@
 .sidebar {
-    width: 220px;
+    width: 250px;
     background-color: #4a90e2;
-    color: #fff;
+    color: #ecf0f1;
     padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    height: 100%;  // tinggi mengikuti parent
-    display: flex;
-    flex-direction: column;  // supaya menu bisa tersusun vertikal
+    box-sizing: border-box;
+    height: 100vh;
+    position: sticky;
+    top: 0;
 
-  h2 {
-    margin-top: 0;
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
+    h2 {
+        margin-top: 0;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
 
-  ul {
+    ul {
     list-style: none;
     padding: 0;
 

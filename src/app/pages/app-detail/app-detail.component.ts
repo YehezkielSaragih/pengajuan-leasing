@@ -5,11 +5,17 @@ import { ApplicationStoreService } from '../../shared/services/application-store
 import { Application } from '../../models/application.model';
 import { FormsModule } from '@angular/forms';
 import { SafeUrlPipe } from '../../shared/pipes/safe-url.pipe';
+import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule, SafeUrlPipe],
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    SafeUrlPipe, 
+    SidebarComponent
+  ],
   templateUrl: './app-detail.component.html',
   styleUrl: './app-detail.component.scss'
 })
