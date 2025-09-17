@@ -1,0 +1,43 @@
+.sidebar {
+    width: 220px;
+    background-color: #4a90e2;
+    color: #fff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    height: 100%;  // tinggi mengikuti parent
+    display: flex;
+    flex-direction: column;  // supaya menu bisa tersusun vertikal
+
+  h2 {
+    margin-top: 0;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 12px;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        display: block;
+        padding: 6px 10px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: rgba(255,255,255,0.2);
+        }
+
+        &.active {
+          background-color: rgba(255,255,255,0.3);
+        }
+      }
+    }
+  }
+}

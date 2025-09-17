@@ -1,0 +1,84 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  thead {
+    background-color: #4a90e2;
+    color: #ffffff;
+    text-align: left;
+
+    th {
+      padding: 12px 15px;
+      font-weight: bold;
+      border-right: 1px solid rgba(255, 255, 255, 0.3);
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #dddddd;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #f1f7ff;
+      }
+    }
+
+    td {
+      padding: 12px 15px;
+      border-right: 1px solid #f0f0f0;
+      vertical-align: middle;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      a {
+        color: #4a90e2;
+        text-decoration: none;
+        font-weight: 500;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      button {
+        background-color: #e74c3c;
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: #c0392b;
+        }
+      }
+    }
+  }
+
+  // Responsif
+  @media (max-width: 768px) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+// Pesan kosong
+p {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+  margin-top: 20px;
+}
