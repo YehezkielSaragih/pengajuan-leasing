@@ -45,4 +45,9 @@ export class RegisterComponent {
       }
     }
   }
+
+  goToLogin(event: Event) {
+    event.preventDefault();
+    this.router.navigate(['/login']);
+  }
 }

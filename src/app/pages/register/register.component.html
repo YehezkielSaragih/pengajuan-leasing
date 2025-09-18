@@ -50,4 +50,10 @@
 
     <button type="submit" [disabled]="registerForm.invalid">Register</button>
   </form>
+
+  <!-- Tambahkan link ke login -->
+  <p class="redirect-text">
+    Already have an account? 
+    <a href="#" (click)="goToLogin($event)">Login</a>
+  </p>
 </div>
