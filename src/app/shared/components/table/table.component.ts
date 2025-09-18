@@ -20,12 +20,6 @@ export class TableComponent {
 
   constructor(private router: Router) {}
 
-  openConfirm(id: number, event: Event): void {
-    event.stopPropagation();
-    this.appIdToDelete = id;
-    this.confirmVisible = true;
-  }
-
   handleConfirmDelete(): void {
     if (this.appIdToDelete !== null) {
       this.delete.emit(this.appIdToDelete);
@@ -42,7 +36,17 @@ export class TableComponent {
     this.appIdToDelete = null;
   }
 
-  goToDetail(id: number): void {
-    this.router.navigate(['/app-detail', id]);
+  goToDetail(id?: number): void {
+    if (id !== undefined) {
+      this.router.navigate(['/app-detail', id]);
+    }
+  }
+
+  openConfirm(id: number | undefined, event: Event): void {
+    event.stopPropagation();
+    if (id !== undefined) {
+      this.appIdToDelete = id;
+      this.confirmVisible = true;
+    }
   }
 }

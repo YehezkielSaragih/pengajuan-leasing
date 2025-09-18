@@ -1,30 +1,24 @@
 import { Component } from '@angular/core';
 import { ApplicationStoreService } from '../../shared/services/application-store.service';
 import { Application } from '../../models/application.model';
-import { CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [
-    CommonModule, 
-    TableComponent,
-    SidebarComponent
-  ],
+  imports: [CommonModule, TableComponent, SidebarComponent],
   templateUrl: './app-dashboard.component.html',
   styleUrl: './app-dashboard.component.scss'
 })
 export class AppDashboardComponent {
-
   applications: Application[] = [];
   filteredApplications: Application[] = [];
 
   searchTerm: string = '';
   selectedStatus: string = 'All';
   selectedType: string = 'All';
-
 
   constructor(private appStore: ApplicationStoreService) {}
 
@@ -33,12 +27,14 @@ export class AppDashboardComponent {
   }
 
   loadApplications(): void {
-    this.applications = this.appStore.getApplications();
-    this.applyFilters();
+    this.appStore.getApplications().subscribe((apps) => {
+      this.applications = apps;
+      this.applyFilters();
+    });
   }
 
   applyFilters(): void {
-    this.filteredApplications = this.applications.filter(app => {
+    this.filteredApplications = this.applications.filter((app) => {
       const matchesName = app.customer.name
         .toLowerCase()
         .includes(this.searchTerm.toLowerCase());
@@ -69,7 +65,8 @@ export class AppDashboardComponent {
   }
 
   deleteApplication(id: number): void {
-    this.appStore.deleteApplication(id);
-    this.loadApplications();
+    this.appStore.deleteApplication(id).subscribe(() => {
+      this.loadApplications();
+    });
   }
 }

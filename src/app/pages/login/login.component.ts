@@ -23,15 +23,18 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
-      if (this.auth.login(email, password)) {
+  if (this.loginForm.valid) {
+    const { email, password } = this.loginForm.value;
+
+    this.auth.login(email, password).subscribe(user => {
+      if (user) {
         this.router.navigate(['/app-dashboard']);
       } else {
         this.errorMessage = 'Invalid email or password';
       }
-    }
+    });
   }
+}
 
   goToRegister(event: Event) {
     event.preventDefault();

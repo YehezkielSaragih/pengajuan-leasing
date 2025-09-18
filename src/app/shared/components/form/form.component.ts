@@ -17,7 +17,7 @@ export class FormComponent {
 
   constructor(
     private fb: FormBuilder,
-    private appStore: ApplicationStoreService,
+    private appService: ApplicationStoreService,
     private router: Router
   ) {
     this.applicationForm = this.fb.group({
@@ -41,27 +41,48 @@ export class FormComponent {
     });
   }
 
-  onFileSelected(event: Event, type: 'ktp' | 'kk' | 'paySlip' | 'npwp'): void {
+  // Convert file ke base64
+  private fileToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = error => reject(error);
+    });
+  }
+
+  async onFileSelected(event: Event, type: 'ktp' | 'kk' | 'paySlip' | 'npwp'): Promise<void> {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
-      this.applicationForm.get('documents')?.get(type)?.setValue(`public/documents/${file.name}`);
+      const base64 = await this.fileToBase64(file);
+      this.applicationForm.get('documents')?.get(type)?.setValue(base64);
     }
   }
 
   onSubmit(): void {
-    if (this.applicationForm.valid) {
-      const formValue = this.applicationForm.value;
-      this.appStore.addApplication(formValue);
-      alert('Application submitted successfully!');
-      this.applicationForm.reset({
-        customer: { name: '', age: 0, job: '', income: 0 },
-        item: { name: '', type: '', price: 0 },
-        documents: { ktp: null, kk: null, paySlip: null, npwp: null },
-      });
-      this.goToStatusPage();
-    }
+  if (this.applicationForm.valid) {
+    const formValue: Omit<Application, 'id'> = {
+      ...this.applicationForm.value,
+      status: 'Pending'
+    };
+
+    this.appService.addApplication(formValue).subscribe({
+      next: () => {
+        alert('Application submitted successfully!');
+        this.applicationForm.reset({
+          customer: { name: '', age: null, job: '', income: null },
+          item: { name: '', type: '', price: null },
+          documents: { ktp: null, kk: null, paySlip: null, npwp: null },
+        });
+        this.goToStatusPage();
+      },
+      error: () => {
+        alert('Failed to submit application. Please try again.');
+      }
+    });
   }
+}
 
   goToStatusPage(): void {
     this.router.navigate(['/app-dashboard']);

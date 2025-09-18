@@ -35,16 +35,26 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    if (this.registerForm.valid) {
-      const newUser: User = this.registerForm.value;
-      if (this.auth.register(newUser)) {
+  if (this.registerForm.valid) {
+    const newUser: User = {
+      name: this.registerForm.value.name,
+      email: this.registerForm.value.email,
+      password: this.registerForm.value.password
+    };
+
+    this.auth.register(newUser).subscribe({
+      next: () => {
         alert('Registration successful! Please login.');
         this.router.navigate(['/login']);
-      } else {
-        this.errorMessage = 'Email already registered!';
+      },
+      error: (err) => {
+        console.error(err);
+        this.errorMessage = 'Failed to register. Try again later.';
       }
-    }
+    });
   }
+}
+
 
   goToLogin(event: Event) {
     event.preventDefault();

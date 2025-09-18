@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let app of applications" (click)="goToDetail(app.id)">
+    <tr *ngFor="let app of applications" (click)="goToDetail(app.id!)">
       <td>{{ app.id }}</td>
       <td>{{ app.customer.name }}</td>
       <td>{{ app.item.type }}</td>
@@ -19,7 +19,7 @@
         </span>
       </td>
       <td>
-        <button (click)="openConfirm(app.id, $event)">Delete</button>
+        <button (click)="openConfirm(app.id!, $event)">Delete</button>
       </td>
     </tr>
   </tbody>

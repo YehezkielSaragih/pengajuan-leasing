@@ -1,5 +1,5 @@
 export interface Application {
-  id: number;
+  id?: number;
   customer: {
     name: string;
     age: number;
