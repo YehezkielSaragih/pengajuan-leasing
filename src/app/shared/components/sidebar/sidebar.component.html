@@ -1,8 +1,11 @@
 <nav class="sidebar">
   <h2>Menu</h2>
-  <ul>
+  <ul class="menu-list">
     <li><a routerLink="/app-dashboard" routerLinkActive="active">Application Dashboard</a></li>
     <li><a routerLink="/app-form" routerLinkActive="active">Application Form</a></li>
-    <li><a routerLink="/login" routerLinkActive="active">Logout</a></li>
   </ul>
+
+  <div class="logout-container">
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
 </nav>

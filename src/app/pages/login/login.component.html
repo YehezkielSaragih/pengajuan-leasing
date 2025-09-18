@@ -21,7 +21,16 @@
         <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</small>
       </div>
     </label>
+    
+    <div class="error" *ngIf="errorMessage">
+      <small>{{ errorMessage }}</small>
+    </div>
 
     <button type="submit" [disabled]="loginForm.invalid">Login</button>
   </form>
+
+  <p class="register-link">
+    Don’t have an account?
+    <a href="#" (click)="goToRegister($event)">Register</a>
+  </p>
 </div>

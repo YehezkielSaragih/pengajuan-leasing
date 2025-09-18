@@ -1,5 +1,11 @@
 <div class="register-container">
   <h2>Register</h2>
+
+  <!-- Error message global -->
+  <div class="error global-error" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
     <label>
