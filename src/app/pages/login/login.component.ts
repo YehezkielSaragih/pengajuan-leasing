@@ -20,4 +20,11 @@ export class LoginComponent {
     });
   }
 
+  onSubmit() {
+    if (this.loginForm.valid) {
+      // Logic
+      this.router.navigate(['/app-dashboard']);
+    }
+  }
+
 }
